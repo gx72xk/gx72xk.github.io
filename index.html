@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+</head>
+<body>
+	<h1>test cell network</h1>
+	<h3 id="test1"></h3>
+    <h3 id="test2"></h3>
+    <h3 id="test3"></h3>
+<script>
+	alert("running");
+	alert(navigator.userAgent);
+		var getConnectionType = function(){
+    try{
+        var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        alert(connection.type);
+        if (!connection) {
+            document.getElementById("test1").innerHTML = "connection detector is not available"
+            return "connection detector is not available";
+        }
+        var type = connection.type;
+        document.getElementById("test1").innerHTML = type;
+       // alert(type)
+        function updateConnectionStatus() {
+            //document.getElementById("test2").innerHTML
+            alert("connection type is change from "+type+" to "+connection.type);
+        };
+        if(connection.addEventListener){
+            connection.addEventListener("typechange",updateConnectionStatus);
+        }
+
+    }catch(e){
+        alert(e);
+    }
+};
+getConnectionType();
+	</script>
+</body>
+</html>
